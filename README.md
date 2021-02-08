@@ -1,6 +1,6 @@
 # postnummer
 
-Postnummer i Norge
+> Postnummer i Norge
 
 ## Bruk
 

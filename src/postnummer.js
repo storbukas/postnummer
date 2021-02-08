@@ -1,4 +1,17 @@
+/*
+ *  Funksjoner for å hente ut postnummer-data
+ *
+ *  updated 08 Feb 2021
+ *  by Lars Erik Storbukås <https://github.com/storbukas>
+ *
+ *  Source: https://github.com/storbukas/postnummer
+ *
+ *  Licensed under the MIT License
+ *  https://opensource.org/licenses/MIT
+ *
+ */
 
+'use strict';
 
 const fs = require('fs');
 const path = require('path');

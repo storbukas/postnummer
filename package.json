@@ -2,7 +2,14 @@
   "name": "postnummer",
   "version": "1.1.0",
   "description": "Norske postnummer",
+  "author": "Lars Erik Storbukås",
+  "homepage": "https://github.com/storbukas/postnummer#readme",
+  "license": "MIT",
   "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/storbukas/postnummer.git"
+  },
   "scripts": {
     "test": "tap --reporter=spec test/*.test.js",
     "lint": "eslint src",
@@ -13,10 +20,6 @@
     "size-build": "npm run build",
     "size": "size-limit",
     "size-watch": "size-limit --why"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/storbukas/postnummer.git"
   },
   "engines": {
     "node": ">=4"
@@ -30,18 +33,15 @@
     "Norway",
     "postal codes"
   ],
-  "author": "Lars Erik Storbukås",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/storbukas/postnummer/issues"
   },
-  "homepage": "https://github.com/storbukas/postnummer#readme",
   "devDependencies": {
-    "@size-limit/preset-small-lib": "^4.4.5",
     "@babel/cli": "^7.8.3",
     "@babel/core": "^7.8.3",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
+    "@size-limit/preset-small-lib": "^4.4.5",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
