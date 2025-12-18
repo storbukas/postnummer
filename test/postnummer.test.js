@@ -1,7 +1,7 @@
 /*
  *  Tests
  *
- *  updated 08 Feb 2021
+ *  updated 18 Dec 2025
  *  by Lars Erik Storbukås <https://github.com/storbukas>
  *
  *  Source: https://github.com/storbukas/postnummer
@@ -13,63 +13,57 @@
 
 'use strict';
 
-const tap = require('tap');
-const postnummer = require('../src/index.js');
+const { test } = require('node:test');
+const assert = require('node:assert');
+const postnummer = require('../dist/index.js');
 
 const kristiansand = {
     "poststed": "KRISTIANSAND S",
-    "kommunenummer": "1001",
+    "kommunenummer": "4204",
     "kommunenavn": "KRISTIANSAND",
     "kategori": "G",
 };
 
-// poststed
+// poststed tests
 
-tap.equal(
-  'KRISTIANSAND S', postnummer.poststed('4633'),
-  '4633 er poststed KRISTIANSAND S'
-);
+test('4633 er poststed KRISTIANSAND S', () => {
+  assert.strictEqual(postnummer.poststed('4633'), 'KRISTIANSAND S');
+});
 
-tap.equal(
-  'SANDVIKA', postnummer.poststed('1337'),
-  '1337 er poststed SANDVIKA'
-);
+test('1337 er poststed SANDVIKA', () => {
+  assert.strictEqual(postnummer.poststed('1337'), 'SANDVIKA');
+});
 
-tap.equal(
-  'GRIMSTAD', postnummer.poststed(4879),
-  '4879 er poststed GRIMSTAD'
-);
+test('4879 er poststed GRIMSTAD', () => {
+  assert.strictEqual(postnummer.poststed(4879), 'GRIMSTAD');
+});
 
-tap.equal(
-  false, postnummer.poststed('9999'),
-  'Ukjent postnummer gir false på poststed'
-);
+test('Ukjent postnummer gir false på poststed', () => {
+  assert.strictEqual(postnummer.poststed('9999'), false);
+});
 
-// json
+// json tests
 
-tap.equal(
-  kristiansand.poststed, postnummer.json('4633').poststed,
-  '4633 er JSON-objekt av KRISTIANSAND'
-);
+test('4633 er JSON-objekt av KRISTIANSAND', () => {
+  assert.strictEqual(postnummer.json('4633').poststed, kristiansand.poststed);
+});
 
-// kommunenavn
-tap.equal(
-  "KRISTIANSAND", postnummer.kommunenavn('4633'),
-  '4633 er kommunenavn KRISTIANSAND'
-);
+// kommunenavn tests
 
-tap.equal(
-  false, postnummer.kommunenavn('9999'),
-  'Ukjent postnummer gir false på kommunenavn'
-);
+test('4633 er kommunenavn KRISTIANSAND', () => {
+  assert.strictEqual(postnummer.kommunenavn('4633'), 'KRISTIANSAND');
+});
 
-// kommunenummer
-tap.equal(
-  "1001", postnummer.kommunenummer('4633'),
-  '4633 er kommunenummer 1001'
-);
+test('Ukjent postnummer gir false på kommunenavn', () => {
+  assert.strictEqual(postnummer.kommunenavn('9999'), false);
+});
 
-tap.equal(
-  false, postnummer.kommunenummer('9999'),
-  'Ukjent postnummer gir false på kommunenummer'
-);
+// kommunenummer tests
+
+test('4633 er kommunenummer 4204', () => {
+  assert.strictEqual(postnummer.kommunenummer('4633'), '4204');
+});
+
+test('Ukjent postnummer gir false på kommunenummer', () => {
+  assert.strictEqual(postnummer.kommunenummer('9999'), false);
+});

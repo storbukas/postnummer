@@ -1,0 +1,8 @@
+{
+  "name": "@storbukas/postnummer",
+  "version": "2.0.0",
+  "exports": "./src/mod.ts",
+  "publish": {
+    "include": ["src/mod.ts", "src/resources/postnummer.json", "README.md", "LICENSE"]
+  }
+}

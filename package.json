@@ -1,28 +1,35 @@
 {
   "name": "postnummer",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Norske postnummer",
   "author": "Lars Erik Storbukås",
   "homepage": "https://github.com/storbukas/postnummer#readme",
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/storbukas/postnummer.git"
   },
   "scripts": {
-    "test": "tap --reporter=spec test/*.test.js",
-    "lint": "eslint src",
-    "lint:fix": "eslint --fix src",
-    "build": "babel src --out-dir lib --extensions \".js,.jsx\" --source-maps inline",
-    "coverage": "tap test/*.js --coverage",
-    "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
-    "size-build": "npm run build",
-    "size": "size-limit",
-    "size-watch": "size-limit --why"
+    "test": "node --test test/*.test.js",
+    "build": "tsc && cp -r src/resources dist/",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=18"
   },
   "keywords": [
     "norsk",
@@ -31,26 +38,15 @@
     "bring",
     "Norge",
     "Norway",
-    "postal codes"
+    "postal codes",
+    "zip codes",
+    "norwegian"
   ],
   "bugs": {
     "url": "https://github.com/storbukas/postnummer/issues"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.3",
-    "@babel/core": "^7.8.3",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/preset-env": "^7.8.3",
-    "@size-limit/preset-small-lib": "^4.4.5",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-plugin-import": "^2.18.2",
-    "size-limit": "^4.4.5",
-    "tap": "^14.10.7"
-  },
-  "size-limit": [
-    {
-      "path": "lib/index.js"
-    }
-  ]
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
 }

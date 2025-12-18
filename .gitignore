@@ -62,6 +62,10 @@ typings/
 
 # Build
 /lib/
+/dist/
+
+# macOS
+.DS_Store
 
 # NPM
 package-lock.json
